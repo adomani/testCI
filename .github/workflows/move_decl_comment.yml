@@ -14,6 +14,14 @@ jobs:
       - id: short_diff
         run: |
           printf $'summary<<EOF\n%s\nEOF' "🐙🐙 hello comment" >> "$GITHUB_OUTPUT"
+
+      - name: Add comment to PR
+        uses: GrantBirki/comment@v2.0.1
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: ${{ steps.short_diff.outputs.summary }}
+
+
       - name: Add comment
         run: gh pr comment "$NUMBER" --body "$BODY"
         env:
