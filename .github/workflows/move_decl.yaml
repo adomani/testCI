@@ -2,7 +2,7 @@ name:  move-decls (label)
 on:
   pull_request:
     types:
-      - labeled
+      - labeld
 
 jobs:
   add-comment:
