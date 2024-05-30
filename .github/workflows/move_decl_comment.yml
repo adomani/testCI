@@ -1,9 +1,9 @@
 name:  move-decls (comment)
 on:
   issue_comment:
-    types: [created]
-  pull_request_target:
-    types: [issue_comment]
+    #types: [created]
+  pull_request_review_comment:
+    #types: [issue_comment]
 
 jobs:
   run-action:
