@@ -23,7 +23,7 @@ jobs:
 
 
       - name: Add comment
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
         run: |
           ## back and forth to settle a "detached head" (maybe?)
           git checkout -q master
