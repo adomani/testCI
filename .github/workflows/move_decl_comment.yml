@@ -23,7 +23,12 @@ jobs:
 
 
       - name: Add comment
-        run: gh pr comment "$NUMBER" --body "$BODY"
+      - uses: actions/checkout@v4
+        run: |
+          ## back and forth to settle a "detached head" (maybe?)
+          git checkout -q master
+          git checkout -q -
+          gh pr comment "$NUMBER" --body "$BODY"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_REPO: ${{ github.repository }}
