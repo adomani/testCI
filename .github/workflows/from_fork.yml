@@ -14,7 +14,6 @@ jobs:
       #    echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
 
       - name: Print something
-        uses: ubuntu-latest
         run: |
           echo "${{ github.event.pull_request.head.repo.full_name }}"
 
