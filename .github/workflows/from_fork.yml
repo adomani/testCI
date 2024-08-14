@@ -13,6 +13,11 @@ jobs:
       #    echo "isFork=$GITHUB_HEAD_REF"
       #    echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
 
+      - name: Print something
+        uses: ubuntu-latest
+        run: |
+          echo "${{ github.event.pull_request.head.repo.full_name }}"
+
       - name: Post a comment on the PR
         if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
         #if: env.isFork
