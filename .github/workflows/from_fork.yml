@@ -6,6 +6,10 @@ on:
 jobs:
   comment-on-pr-from-fork:
     runs-on: ubuntu-latest
+
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       #- name: Check if the PR is from a fork
       #  id: check_fork
