@@ -7,7 +7,6 @@ jobs:
   comment-on-pr-from-fork:
     runs-on: ubuntu-latest
     steps:
-      if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
       #- name: Check if the PR is from a fork
       #  id: check_fork
       #  run: |
@@ -15,7 +14,8 @@ jobs:
       #    echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
 
       - name: Post a comment on the PR
-        if: env.isFork
+        if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
+        #if: env.isFork
         uses: actions/github-script@v6
         with:
           script: |
