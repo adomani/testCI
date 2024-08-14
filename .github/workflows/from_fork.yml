@@ -11,7 +11,9 @@ jobs:
     steps:
       - name: Check if the PR is from a fork
         id: check_fork
-        run: echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
+        run: |
+          echo "isFork=$GITHUB_HEAD_REF"
+          echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
 
       - name: Post a comment on the PR
         if: env.isFork
