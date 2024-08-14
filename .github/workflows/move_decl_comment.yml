@@ -22,8 +22,10 @@ jobs:
       #    body: ${{ steps.short_diff.outputs.summary }}
 
 
-      - name: Add comment
+      - name: checkout repo
         uses: actions/checkout@v4
+
+      - name: add_commend
         run: |
           ## back and forth to settle a "detached head" (maybe?)
           git checkout -q master
