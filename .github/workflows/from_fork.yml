@@ -2,18 +2,17 @@ name: PR Comment on Fork
 
 on:
   pull_request:
-    types: [opened]
 
 jobs:
-  #if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
+  if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
   comment-on-pr-from-fork:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if the PR is from a fork
-        id: check_fork
-        run: |
-          echo "isFork=$GITHUB_HEAD_REF"
-          echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
+      #- name: Check if the PR is from a fork
+      #  id: check_fork
+      #  run: |
+      #    echo "isFork=$GITHUB_HEAD_REF"
+      #    echo "isFork=$GITHUB_HEAD_REF" >> "$GITHUB_ENV"
 
       - name: Post a comment on the PR
         if: env.isFork
