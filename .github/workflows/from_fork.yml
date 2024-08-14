@@ -4,10 +4,10 @@ on:
   pull_request:
 
 jobs:
-  if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
   comment-on-pr-from-fork:
     runs-on: ubuntu-latest
     steps:
+      if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
       #- name: Check if the PR is from a fork
       #  id: check_fork
       #  run: |
