@@ -1,7 +1,7 @@
 name: PR Comment on Fork
 
 on:
-  pull_request:
+  pull_request_target:
 
 jobs:
   comment-on-pr-from-fork:
