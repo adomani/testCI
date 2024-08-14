@@ -1,0 +1,26 @@
+name: PR Comment on Fork
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  #if: ${{ github.event.pull_request.head.repo.full_name != 'org/repo' }}
+  comment-on-pr-from-fork:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if the PR is from a fork
+        id: check_fork
+        run: echo "isFork=$GITHUB_HEAD_REF" >> $GITHUB_ENV
+
+      - name: Post a comment on the PR
+        if: env.isFork
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: "Thank you for opening a PR from your fork! We'll review it soon."
+            })
